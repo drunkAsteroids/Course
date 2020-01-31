@@ -6,10 +6,19 @@
 //  Copyright © 2020 asu. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
 class Concentration {
     var cards = [Card]()
+    var currentTheme: Theme
+    var emojiArray: [Emoji] = []
+    
+    var themes: [Theme] = [
+        Theme(_emojiArray: [.cry, .goofy, .halo, .raisedEyebrow, .scream, .skull], _name: "Normal emojies", _backCardColor: #colorLiteral(red: 1, green: 0.6910475492, blue: 0, alpha: 1)),
+        Theme(_emojiArray: [.bee, .dog, .rabbit, .linux, .monkey, .snail], _name: "Animal emojies", _backCardColor: #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)),
+        Theme(_emojiArray: [.hockey, .karate, .kite, .skate, .skyrim, .sled], _name: "Sport emojies", _backCardColor: #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1))
+    ]
     
     var indexOfOneAndOnlyFaceUp: Int?
     
@@ -34,6 +43,15 @@ class Concentration {
             }
         }
     }
+    /// add theme one-liner
+    func addTheme(emoji: [Emoji], name: String, backCardColor: UIColor) {
+        themes.append(Theme(_emojiArray: emoji, _name: name, _backCardColor: backCardColor))
+    }
+    
+    func selectRandomTheme() {
+        currentTheme = themes[Int(arc4random_uniform(UInt32(self.themes.count)))]
+        emojiArray = currentTheme.emoji
+    }
     
     init(numberPairsOfCards: Int) {
         for _ in 0..<numberPairsOfCards {
@@ -42,5 +60,7 @@ class Concentration {
         }
         
         self.cards.shuffle() //randomize cards
+        currentTheme = themes[Int(arc4random_uniform(UInt32(self.themes.count)))]
+        emojiArray = currentTheme.emoji
     }
 }

@@ -15,6 +15,18 @@ enum Emoji: String {
     case halo = "😇"
     case goofy = "🤪"
     case skull = "💀"
+    case dog = "🐶"
+    case monkey = "🐒"
+    case bee = "🐝"
+    case rabbit = "🐰"
+    case linux = "🐧"
+    case snail = "🐌"
+    case skate = "🛹"
+    case skyrim = "🏹"
+    case kite = "🪁"
+    case hockey = "🏒"
+    case karate = "🥋"
+    case sled = "🛷"
 }
 
 class ViewController: UIViewController {
@@ -30,9 +42,6 @@ class ViewController: UIViewController {
     
     lazy var game = Concentration(numberPairsOfCards: (self.cardButtons.count + 1) / 2 )
     
-    var emojiArray: [Emoji] = [.cry, .scream,
-                               .raisedEyebrow, .halo,
-                               .goofy, .skull]
     var emoji: [Int: Emoji] = [:]
     
     @IBOutlet weak var countLabel: UILabel!
@@ -53,15 +62,16 @@ class ViewController: UIViewController {
             game.cards[index].isMatched = false
         }
         
+        game.selectRandomTheme()
         count = 0
         updateViewModel()
     }
     
     func emoji(for card: Card) -> String {
         
-        if self.emoji[card.identifier] == nil, self.emojiArray.count > 0 {
-            let randomIndex = Int(arc4random_uniform(UInt32(self.emojiArray.count)))
-            self.emoji[card.identifier] = self.emojiArray.remove(at: randomIndex)
+        if self.emoji[card.identifier] == nil, game.emojiArray.count > 0 {
+            let randomIndex = Int(arc4random_uniform(UInt32(game.emojiArray.count)))
+            self.emoji[card.identifier] = game.emojiArray.remove(at: randomIndex)
         }
         
         return self.emoji[card.identifier]?.rawValue ?? "?"
@@ -78,7 +88,7 @@ class ViewController: UIViewController {
                button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
            } else {
                button.setTitle("", for: .normal)
-               button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.6910475492, blue: 0, alpha: 0) : #colorLiteral(red: 1, green: 0.6910475492, blue: 0, alpha: 1)
+            button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.6910475492, blue: 0, alpha: 0) : game.currentTheme.backCardColor
            }
        }
    }
