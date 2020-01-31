@@ -25,7 +25,7 @@ class Concentration {
     var indexOfOneAndOnlyFaceUp: Int?
     
     func chooseCard(at index: Int) {
-        
+        count += 1 
         if !self.cards[index].isMatched {
             
             if let matchIndex = self.indexOfOneAndOnlyFaceUp, matchIndex != index {
