@@ -32,16 +32,15 @@ class Concentration {
                 self.cards[index].isFaceUp = true
                 self.indexOfOneAndOnlyFaceUp = index
             }
-            
         }
-        
     }
     
     init(numberPairsOfCards: Int) {
-        
         for _ in 0..<numberPairsOfCards {
             let card = Card()
             self.cards += [card, card]
         }
+        
+        self.cards.shuffle() //randomize cards
     }
 }
