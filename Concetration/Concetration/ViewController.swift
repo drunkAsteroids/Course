@@ -60,8 +60,13 @@ class ViewController: UIViewController {
         
         game.score = 0
         pointsLabel.text = "Points: 0"
+        game.cards.removeAll()
+        game = Concentration(numberPairsOfCards: (self.cardButtons.count + 1) / 2 )
         game.selectRandomTheme()
         game.count = 0
+        game.cards.shuffle()
+        emoji.removeAll()
+        
         updateViewModel()
     }
     
