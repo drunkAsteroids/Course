@@ -13,6 +13,8 @@ class Concentration {
     var cards = [Card]()
     var currentTheme: Theme
     var emojiArray: [Emoji] = []
+    var score = 0
+    var count = 0
     
     var themes: [Theme] = [
         Theme(_emojiArray: [.cry, .goofy, .halo, .raisedEyebrow, .scream, .skull], _name: "Normal emojies", _backCardColor: #colorLiteral(red: 1, green: 0.6910475492, blue: 0, alpha: 1)),
@@ -30,10 +32,13 @@ class Concentration {
                 if self.cards[matchIndex].identifier == self.cards[index].identifier {
                     self.cards[matchIndex].isMatched = true
                     self.cards[index].isMatched = true
+                    score += 2
+                }
+                else {
+                    score -= 1
                 }
                 self.cards[index].isFaceUp = true
-                self.indexOfOneAndOnlyFaceUp = nil
-                
+                self.indexOfOneAndOnlyFaceUp = nil                   
             } else {
                 for flipDownIndex in self.cards.indices {
                     self.cards[flipDownIndex].isFaceUp = false
@@ -60,7 +65,7 @@ class Concentration {
         }
         
         self.cards.shuffle() //randomize cards
-        currentTheme = themes[Int(arc4random_uniform(UInt32(self.themes.count)))]
+        currentTheme = themes[0]
         emojiArray = currentTheme.emoji
     }
 }

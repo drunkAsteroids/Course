@@ -31,12 +31,8 @@ enum Emoji: String {
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var pointsLabel: UILabel!
     private let countLabelText = "Счетчик нажатий:"
-    private var count = 0 {
-        didSet {
-            self.countLabel.text = "\(countLabelText) \(self.count)"
-        }
-    }
     
     @IBOutlet var cardButtons: [UIButton]!
     
@@ -62,8 +58,10 @@ class ViewController: UIViewController {
             game.cards[index].isMatched = false
         }
         
+        game.score = 0
+        pointsLabel.text = "Points: 0"
         game.selectRandomTheme()
-        count = 0
+        game.count = 0
         updateViewModel()
     }
     
@@ -78,7 +76,9 @@ class ViewController: UIViewController {
     }
     
     func updateViewModel() {
-       for index in self.cardButtons.indices {
+        pointsLabel.text = "Points: \(game.score)"
+        self.countLabel.text = "\(countLabelText) \(game.count)"
+        for index in self.cardButtons.indices {
            
            let button = self.cardButtons[index]
            let card = self.game.cards[index]

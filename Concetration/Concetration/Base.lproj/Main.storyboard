@@ -21,19 +21,8 @@
                                 <rect key="frame" x="15" y="81" width="343" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NF5-Dg-3T9">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="120"/>
-                                        <color key="backgroundColor" red="1" green="0.70703035000000003" blue="0.24550513700000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="nTu-Wp-f4F"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                        <connections>
-                                            <action selector="emojiButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1n9-s6-AkB"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0wb-lP-GQr">
-                                        <rect key="frame" x="131.5" y="0.0" width="80" height="120"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="120"/>
                                         <color key="backgroundColor" red="1" green="0.70703035000000003" blue="0.24550513700000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="GKm-eZ-c0G"/>
@@ -44,7 +33,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dF3-pV-9Ep">
-                                        <rect key="frame" x="263" y="0.0" width="80" height="120"/>
+                                        <rect key="frame" x="131.5" y="0.0" width="80" height="120"/>
                                         <color key="backgroundColor" red="1" green="0.70703035000000003" blue="0.24550513700000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="hc3-wh-S1g"/>
@@ -52,6 +41,17 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <connections>
                                             <action selector="emojiButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wxc-i6-F3h"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NF5-Dg-3T9">
+                                        <rect key="frame" x="263" y="0.0" width="80" height="120"/>
+                                        <color key="backgroundColor" red="1" green="0.70703035000000003" blue="0.24550513700000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="nTu-Wp-f4F"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <connections>
+                                            <action selector="emojiButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1n9-s6-AkB"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -200,6 +200,13 @@
                                     <action selector="NewGameAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cqy-c3-Rvv"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Points: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yzm-L4-e11" userLabel="points">
+                                <rect key="frame" x="14" y="619" width="181" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -213,8 +220,7 @@
                     </view>
                     <connections>
                         <outlet property="countLabel" destination="MfD-7I-gFt" id="4ly-NX-vMg"/>
-                        <outletCollection property="cardButtons" destination="NF5-Dg-3T9" collectionClass="NSMutableArray" id="HZK-3q-huN"/>
-                        <outletCollection property="cardButtons" destination="0wb-lP-GQr" collectionClass="NSMutableArray" id="3Nf-gA-gT0"/>
+                        <outlet property="pointsLabel" destination="Yzm-L4-e11" id="L2l-Vp-cwZ"/>
                         <outletCollection property="cardButtons" destination="dF3-pV-9Ep" collectionClass="NSMutableArray" id="Qgh-Fz-y09"/>
                         <outletCollection property="cardButtons" destination="on3-NE-7tj" collectionClass="NSMutableArray" id="g4I-h8-wVi"/>
                         <outletCollection property="cardButtons" destination="a4M-Dy-hQm" collectionClass="NSMutableArray" id="Qbf-z2-8Af"/>
@@ -225,6 +231,8 @@
                         <outletCollection property="cardButtons" destination="qXl-Mj-ePO" collectionClass="NSMutableArray" id="PRt-yR-OOW"/>
                         <outletCollection property="cardButtons" destination="1fG-Uk-39n" collectionClass="NSMutableArray" id="DWY-00-PMY"/>
                         <outletCollection property="cardButtons" destination="bcC-Zr-ADA" collectionClass="NSMutableArray" id="E1b-AF-PYB"/>
+                        <outletCollection property="cardButtons" destination="NF5-Dg-3T9" collectionClass="NSMutableArray" id="HZK-3q-huN"/>
+                        <outletCollection property="cardButtons" destination="0wb-lP-GQr" collectionClass="NSMutableArray" id="3Nf-gA-gT0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
